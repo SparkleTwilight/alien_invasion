@@ -38,7 +38,7 @@ class AlienInvasion:
     #The following known as a helper method,
     #which is written with a single underscore before its name.
     #Helper methods cannot be accessed outside of the class.
-    def _check_events(): 
+    def _check_events(self): 
         """Respond to keypreses and mouse events."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
