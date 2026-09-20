@@ -29,19 +29,29 @@ class AlienInvasion:
         """Start the main loop for the game."""
         #Watch for keyboard and mouse events.
         while True:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
+            self._check_events()
+            self._update_screen()
 
-            #Make the most recently drawn screen visible.
-            pygame.display.flip()
-            self.clock.tick(60)  #Set the frame rate to 60 frames/sec
+            #Set the frame rate to 60 frames/sec
+            self.clock.tick(60)  
+           
+    #The following known as a helper method,
+    #which is written with a single underscore before its name.
+    #Helper methods cannot be accessed outside of the class.
+    def _check_events(): 
+        """Respond to keypreses and mouse events."""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
 
-            #Redraw the screen during each pass through the loop.
-            self.screen.fill(self.settings.bg_color)
-            self.ship.blitme()
+    def _update_screen(self):
+        """Update images on the screen, and flip to the new screen."""
+         #Redraw the screen during each pass through the loop.
+        self.screen.fill(self.settings.bg_color)
+        self.ship.blitme()
 
-            
+        #Make the most recently drawn screen visible.
+        pygame.display.flip()
 
 if __name__ == '__main__':
     #Make a game instance, and run the game.
