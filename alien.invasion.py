@@ -30,8 +30,9 @@ class AlienInvasion:
         #Watch for keyboard and mouse events.
         while True:
             self._check_events()
-            self._update_screen()
             self.ship.update()
+            self._update_screen()
+           
 
             #Set the frame rate to 60 frames/sec
             self.clock.tick(60)  
@@ -48,9 +49,16 @@ class AlienInvasion:
                 if event.key == pygame.K_RIGHT:
                     #Move the ship to the right.
                     self.ship.moving_right = True
+                    #Move ship to the left.
+                if event.key == pygame.K_LEFT:
+                    self.ship.moving_left = True
+
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_RIGHT:
                     self.ship.moving_right = False
+                if event.key == pygame.K_LEFT:
+                    self.ship.moving_left = False
+            
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
